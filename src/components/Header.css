@@ -1,0 +1,29 @@
+.header {
+  width: 100%;
+  padding: 1.8rem 1rem;
+  text-align: center;
+  color: rgb(17, 172, 208);
+  background-color: white;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header-subtitle {
+  margin: 0.3rem 0 0;
+  opacity: 0.9;
+  font-size: 1.25rem;
+  font-weight: 400;
+  font-family: "Franklin Gothic Heavy";
+}
+
+.img_logo {
+    width: 350px;
+    height: auto;
+}
