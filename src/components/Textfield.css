@@ -1,0 +1,36 @@
+.textfield-container {
+    height: 60px;
+    padding: 0.5rem;
+    text-align: center;
+    color: rgb(17, 172, 208);
+    background-color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.textfield-input {
+    flex: 1;
+}
+
+.textfield-button {
+    padding: 0.7rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Franklin Gothic Medium';
+    border-radius: 8px;
+    border: 2px solid black;
+    background-color: rgb(17, 172, 208);
+    color: white;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.textfield-button::hoover {
+    background-color: rgb(152, 163, 165);
+    transform: scale(1.04);
+}

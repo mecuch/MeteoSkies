@@ -1,0 +1,14 @@
+.city-body {
+    height: 350px;
+    padding: 0.5rem;
+    text-align: center;
+    color: rgb(17, 172, 208);
+    background-color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: flex;
+    justify-content: space-evenly;
+}
