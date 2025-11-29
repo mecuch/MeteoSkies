@@ -1,15 +1,26 @@
-
 import "./Corpse.css";
+import type { City } from "../data/cities";
+import WeatherTemperature from "./WeatherMainTemp";"./WeatherMainTemp"
+
 type Props = {
-  cities: string[];
+  cities: City[];
 };
 
-export default function CityBody({ cities }: Props) {
+export default function Corpse({ cities }: Props) {
+  if (cities.length === 0) {
+    return (
+      <div className="city-body">
+        <p>Nie wybrano miasta.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="city-body">
       <ul>
-        {cities.map((city, index) => (
-          <li key={index}>{city}</li>
+        {cities.map((city) => (
+          <li key={city.id}>{city.name} <WeatherTemperature latitude={city.latitude} longitude={city.longitude} 
+/></li>
         ))}
       </ul>
     </div>
