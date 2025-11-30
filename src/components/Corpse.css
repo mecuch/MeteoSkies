@@ -16,6 +16,6 @@
 .city-body li {
   display: flex;
   align-items: center;
-  gap: 0.5rem;     
+  gap: 0.5rem;
   padding: 0.3rem 0;
 }

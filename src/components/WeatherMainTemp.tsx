@@ -7,6 +7,7 @@ type Props = {
 
 export default function WeatherTemperature({ latitude, longitude }: Props) {
   const [temp, setTemp] = useState<number | null>(null);
+  const [wethcode, setWethcode] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -16,6 +17,7 @@ export default function WeatherTemperature({ latitude, longitude }: Props) {
       .then(res => res.json())
       .then(data => {
         setTemp(data.current_weather.temperature);
+        setWethcode(data.current_weather.weathercode)
         setLoading(false);
       })
       .catch(() => setLoading(false));
@@ -24,5 +26,7 @@ export default function WeatherTemperature({ latitude, longitude }: Props) {
   if (loading) return <p>Ładuję temperaturę…</p>;
   if (temp === null) return <p>Brak danych pogodowych</p>;
 
-  return <p>{temp}°C</p>;
+  return (
+  <p>{temp}°C {wethcode}</p>
+);
 }
