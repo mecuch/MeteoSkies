@@ -18,7 +18,7 @@ export default function More() {
 
   return (
     <div className="app-container">
-      <h2>Szczegóły: {decodedCityName}</h2>
+      <h2>{decodedCityName}</h2>
 
       <CityWeatherBridge cityName={decodedCityName} />
 
