@@ -1,24 +1,23 @@
 import "./App.css";
 import { useState } from "react";
-import Header from "./components/Header";
-import Textfield from "./components/Textfield";
-import Corpse from "./components/Corpse";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import More from "./pages/More";
 
 function App() {
-   const [cities, setCities] = useState<string[]>([]);
+  const [cities, setCities] = useState<string[]>([]);
 
   const addCity = (city: string) => {
-    if (!city.trim()) return;
-    setCities((prev) => [...prev, city]);
+    const trimmed = city.trim();
+    if (!trimmed) return;
+    setCities((prev) => [...prev, trimmed]);
   };
 
   return (
-    <div className="app-container">
-      <Header />
-      <Textfield onAddCity={addCity} />
-      <Corpse cities={cities} />
-      <h2>status aktualziacji pogody</h2>
-    </div>
+    <Routes>
+      <Route path="/" element={<Home cities={cities} addCity={addCity} />} />
+      <Route path="/more/:cityName" element={<More />} />
+    </Routes>
   );
 }
 
