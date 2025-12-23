@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import CityWeatherBridge from "../components/Bridge";
+import CityWeatherBridgeDetails from "../components/BridgeDetails";
 
 export default function More() {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function More() {
     <div className="app-container">
       <h2>{decodedCityName}</h2>
 
-      <CityWeatherBridge cityName={decodedCityName} />
+      <CityWeatherBridgeDetails cityName={decodedCityName} />
 
       <button onClick={() => navigate("/")}>Powrót</button>
     </div>

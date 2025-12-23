@@ -1,0 +1,17 @@
+.details-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: large;
+}
+
+.weather-icon-big {
+    width: 320px;
+    height: 320px;
+}
+
+.weather-temp-big {
+    font-size: 3rem;
+    font-weight: 400;
+    font-family: "Franklin Gothic Heavy";
+}
