@@ -1,0 +1,52 @@
+.forecast5 {
+  margin-top: 1rem;
+}
+
+.forecast5-title {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.forecast5-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.forecast5-item {
+  display: grid;
+  grid-template-columns: 110px 40px 1fr 70px;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.forecast5-date {
+  font-weight: 500;
+}
+
+.forecast5-icon img {
+  width: 28px;
+  height: 28px;
+}
+
+.forecast5-temps {
+  text-align: right;
+}
+
+.forecast5-temp-max {
+  font-weight: 600;
+}
+
+.forecast5-temp-min {
+  opacity: 0.65;
+  font-size: 0.9rem;
+}
+
+.forecast5-precip {
+  text-align: right;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}

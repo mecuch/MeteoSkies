@@ -13,9 +13,13 @@ function App() {
     setCities((prev) => [...prev, trimmed]);
   };
 
+  const removeCity = (cityToRemove: string) => {
+  setCities(prev => prev.filter(city => city !== cityToRemove));
+};
+
   return (
     <Routes>
-      <Route path="/" element={<Home cities={cities} addCity={addCity} />} />
+      <Route path="/" element={<Home cities={cities} addCity={addCity} removeCity={removeCity} />} />
       <Route path="/more/:cityName" element={<More />} />
     </Routes>
   );

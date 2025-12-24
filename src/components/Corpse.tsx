@@ -4,9 +4,10 @@ import { useNavigate } from "react-router-dom";
 
 type Props = {
   cities: string[];
+  onRemoveCity: (city: string) => void;
 };
 
-export default function Corpse({ cities }: Props) {
+export default function Corpse({ cities, onRemoveCity }: Props) {
   const navigate = useNavigate();
   if (cities.length === 0) {
     return (
@@ -23,8 +24,8 @@ export default function Corpse({ cities }: Props) {
           <li key={index}>
             {city}
             <CityWeatherBridge cityName={city} />
-            <button onClick={() => navigate(`/more/${encodeURIComponent(city)}`)} className="details-button">Szczegóły</button>
-            <button className="details-button">X</button>
+            <button onClick={() => navigate(`/more/${encodeURIComponent(city)}`)} className="button">Szczegóły</button>
+            <button className="button" onClick={() => onRemoveCity(city)}>X</button>
           </li> 
         ))}
       </ul>

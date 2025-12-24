@@ -1,0 +1,25 @@
+.textfield-container {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.5rem 1rem;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+    color: rgb(17, 172, 208);
+    background-color: white;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+.textfield-input {
+    background-color: aliceblue;
+    font-family: "Franklin Gothic Heavy";
+    color: rgb(17, 172, 208);
+}
+
+.textfield-button {
+    background-color: rgb(17, 172, 208);
+
+}
