@@ -35,7 +35,7 @@ export default function WeatherTemperature({ latitude, longitude, unit }: Props)
   const iconName = weatherCodeToIcon10[wethcode];
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+    <div>
       {shown !== null ? `${Math.round(shown)}${unitLabel(unit)}` : "—"}
       <img
         src={`/icons/${iconName}.png`}

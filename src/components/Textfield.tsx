@@ -26,7 +26,6 @@ export default function Textfield({ onAddCity }: Props) {
   useEffect(() => {
     const q = value.trim();
 
-    // nie szukaj, dopóki user nie wpisze min. 2 znaki
     if (q.length < 2) {
       setSuggestions([]);
       setLoading(false);

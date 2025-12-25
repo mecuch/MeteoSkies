@@ -1,40 +1,63 @@
+import { useState } from "react";
 import type { TempUnit } from "../App";
-import "./Settings.css"
 import { useNavigate } from "react-router-dom";
+import "./Settings.css";
 
 type Props = {
   unit: TempUnit;
-  onChangeUnit: (u: TempUnit) => void;
+  onSaveUnit: (u: TempUnit) => void;
 };
 
-export default function Settings({ unit, onChangeUnit }: Props) {
-  const navigate = useNavigate()
-  return (
-    <div className="app-container">
-      <h2>Ustawienia</h2>
+export default function Settings({ unit, onSaveUnit }: Props) {
+  const navigate = useNavigate();
+  const [draft, setDraft] = useState<TempUnit>(unit);
 
-      <div>
-        <label>
+  return (
+    <div className="app-container settings">
+      <h2 className="settings-title">Ustawienia</h2>
+
+      <div className="settings-units">
+        <label className="settings-radio">
           <input
             type="radio"
             name="unit"
-            checked={unit === "°C"}
-            onChange={() => onChangeUnit("°C")}
+            checked={draft === "°C"}
+            onChange={() => setDraft("°C")}
           />
-          Celsjusz (°C)
+          <span>°C</span>
         </label>
 
-        <label style={{ marginLeft: "1rem" }}>
+        <label className="settings-radio">
           <input
             type="radio"
             name="unit"
-            checked={unit === "°F"}
-            onChange={() => onChangeUnit("°F")}
+            checked={draft === "°F"}
+            onChange={() => setDraft("°F")}
           />
-          Fahrenheit (°F)
+          <span>°F</span>
         </label>
       </div>
-      <button onClick={() => navigate("/")}>Powrót</button>
+
+      <div className="settings-actions">
+        <button
+          type="button"
+          className="settings-button primary"
+          onClick={() => {
+            onSaveUnit(draft);
+            navigate("/");
+          }}
+        >
+          Zapisz
+        </button>
+
+        <button
+          type="button"
+          className="settings-button secondary"
+          onClick={() => navigate("/")}
+        >
+          Anuluj
+        </button>
+      </div>
     </div>
   );
 }

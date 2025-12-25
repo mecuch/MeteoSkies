@@ -1,21 +1,61 @@
 .city-body {
-    height: 350px;
-    padding: 0.5rem;
-    text-align: center;
-    color: rgb(17, 172, 208);
     background-color: white;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-bottom-right-radius: 12px;
+    padding: 1rem;
+    border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: flex;
-    justify-content: space-evenly;
+    height: 360px;
+    color: rgb(17, 172, 208);;
 }
 
-.city-body li {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.3rem 0;
+.city-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
+.city-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.75rem;
+    padding: 0.35rem 0;
+}
+
+.city-left {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 0;          
+    flex: 1;               
+}
+
+.city-name {
+    flex: 1;
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: rgb(17, 172, 208);
+}
+
+.city-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 0 0 auto;
+}
+
+.button {
+    height: 34px;
+    padding: 0 14px;
+    border: 0;
+    border-radius: 10px;
+    background-color: rgb(17, 172, 208);
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+

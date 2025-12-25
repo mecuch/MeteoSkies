@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router-dom";
 import CityWeatherBridgeDetails from "../components/BridgeDetails";
 import type { TempUnit } from "../App";
+import "./More.css"
 
 type Props = {
   unit: TempUnit;
@@ -22,12 +23,12 @@ export default function More({ unit }: Props) {
   const decodedCityName = decodeURIComponent(cityName);
 
   return (
-    <div className="app-container">
+    <div className="app-containerr">
       <h2>{decodedCityName}</h2>
 
       <CityWeatherBridgeDetails cityName={decodedCityName} unit={unit} />
 
-      <button onClick={() => navigate("/")}>Powrót</button>
+      <button className="button" onClick={() => navigate("/")}>Powrót</button>
     </div>
   );
 }
