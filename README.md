@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# 🌤️ MeteoSkies
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![MeteoSkies logo](src/assets/meteo_logo.png)
 
-Currently, two official plugins are available:
+**MeteoSkies** to aplikacja webowa stworzona w React, służąca do sprawdzania aktualnej pogody oraz prognozy dla wybranych miast. Projekt został wykonany w ramach zaliczenia z przedmiotu **Programowanie Frontend**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Funkcjonalności
 
-## React Compiler
+### Wymagania konieczne (zrealizowane)
+- Wyświetlanie listy miast na ekranie głównym  
+- Podgląd szczegółów pogody dla wybranego miasta:
+  - aktualna temperatura,
+  - aktualne warunki pogodowe (ikony),
+  - prognoza na **5 kolejnych dni**,
+  - prawdopodobieństwo i suma opadów,
+  - prędkość i kierunek wiatru,
+  - stopień zachmurzenia
+- Nawigacja pomiędzy podstronami (React Router)
+- Reużywalne komponenty
+- Stylowanie przy użyciu CSS
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Funkcjonalności dodatkowe
+- Globalna zmiana jednostek temperatury (**°C / °F**)  
+- Wyszukiwanie miast z podpowiedziami (Open-Meteo Geocoding API)  
+- Oznaczanie miast jako ulubione (❤️)  
+- Zapisywanie stanu aplikacji w `localStorage`:
+  - zapisane miasta,
+  - wybrana jednostka temperatury
 
-## Expanding the ESLint configuration
+## 🛠️ Technologie
+- **React + TypeScript**
+- **React Router**
+- **Open-Meteo API** (prognoza pogody i geokodowanie)
+- CSS (bez frameworków UI)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📦 API
+Aplikacja korzysta z publicznego API:
+- https://open-meteo.com/
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📌 Status projektu
+Projekt spełnia wszystkie wymagania funkcjonalne z sekcji *Wymagania konieczne* oraz część wymagań dodatkowych.  
+Nie zastosowano biblioteki **Redux** (stan globalny zarządzany jest przez React + localStorage).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🎓 Kontekst akademicki
+Projekt wykonany zgodnie z wytycznymi projektu semestralnego z kursu *Programowanie Frontend* :contentReference[oaicite:0]{index=0}
