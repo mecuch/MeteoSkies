@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { weatherCodeToIcon10 } from "./WeatherIcons";
+import { toDisplayTemp, unitLabel } from "../utils/unitchanger";
+import type { TempUnit } from "../App";
 
 type Props = {
   latitude: number;
   longitude: number;
+  unit: TempUnit
 };
 
-export default function WeatherTemperature({ latitude, longitude }: Props) {
+export default function WeatherTemperature({ latitude, longitude, unit }: Props) {
   const [temp, setTemp] = useState<number | null>(null);
   const [wethcode, setWethcode] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  const shown = temp !== null ? toDisplayTemp(temp, unit) : null;
 
   useEffect(() => {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true`;
@@ -32,7 +36,7 @@ export default function WeatherTemperature({ latitude, longitude }: Props) {
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-      <span>{temp}°C</span>
+      {shown !== null ? `${Math.round(shown)}${unitLabel(unit)}` : "—"}
       <img
         src={`/icons/${iconName}.png`}
         alt={iconName}

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { weatherCodeToIcon10 } from "./WeatherIcons";
 import "./Forecast5Days.css";
+import { toDisplayTemp, unitLabel } from "../utils/unitchanger";
+import type { TempUnit } from "../App";
 
 type Props = {
   latitude: number;
   longitude: number;
+  unit: TempUnit
 };
 
 type DayForecast = {
@@ -24,7 +27,7 @@ function formatPLDate(isoDate: string): string {
   });
 }
 
-export default function Forecast5Days({ latitude, longitude }: Props) {
+export default function Forecast5Days({ latitude, longitude, unit }: Props) {
   const [days, setDays] = useState<DayForecast[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -93,10 +96,12 @@ export default function Forecast5Days({ latitude, longitude }: Props) {
 
               <div className="forecast5-temps">
                 <div className="forecast5-temp-max">
-                  {Math.round(d.tMax)}°
+                  {Math.round(toDisplayTemp(d.tMax, unit))}
+                  {unitLabel(unit)}
                 </div>
                 <div className="forecast5-temp-min">
-                  {Math.round(d.tMin)}°
+                  {Math.round(toDisplayTemp(d.tMin, unit))}
+                  {unitLabel(unit)}
                 </div>
               </div>
             </li>

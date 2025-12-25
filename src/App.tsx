@@ -3,9 +3,13 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import More from "./pages/More";
+import Settings from "./pages/Settings";
+
+export type TempUnit = "°C" | "°F";
 
 function App() {
   const [cities, setCities] = useState<string[]>([]);
+  const [unit, setUnit] = useState<TempUnit>("°C");
 
   const addCity = (city: string) => {
     const trimmed = city.trim();
@@ -19,8 +23,9 @@ function App() {
 
   return (
     <Routes>
-      <Route path="/" element={<Home cities={cities} addCity={addCity} removeCity={removeCity} />} />
-      <Route path="/more/:cityName" element={<More />} />
+      <Route path="/" element={<Home cities={cities} addCity={addCity} removeCity={removeCity} unit={unit} />} />
+      <Route path="/more/:cityName" element={<More unit={unit}/>} />
+      <Route path="/settings" element={<Settings unit={unit} onChangeUnit={setUnit} />} />
     </Routes>
   );
 }

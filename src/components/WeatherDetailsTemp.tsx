@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { weatherCodeToIcon10 } from "./WeatherIcons";
+import { toDisplayTemp, unitLabel } from "../utils/unitchanger";
+import type { TempUnit } from "../App";
 
 type Props = {
   latitude: number;
   longitude: number;
+  unit: TempUnit;
 };
 
-export default function WeatherDetails({ latitude, longitude }: Props) {
+export default function WeatherDetails({ latitude, longitude, unit }: Props) {
   const [temp, setTemp] = useState<number | null>(null);
   const [wethcode, setWethcode] = useState<number | null>(null);
   const [precipprob, setPrecipProb] = useState<number | null>(null);
@@ -17,6 +20,8 @@ export default function WeatherDetails({ latitude, longitude }: Props) {
   const [winddir, SetWindDir] = useState<number>(0);
 
   const [loading, setLoading] = useState(true);
+
+  const shown = temp !== null ? toDisplayTemp(temp, unit) : null;
 
   useEffect(() => {
     const url =
@@ -78,7 +83,9 @@ export default function WeatherDetails({ latitude, longitude }: Props) {
         />
       </div>
       <div>
-        <p className="weather-temp-big">{temp}°C</p>
+        <p className="weather-temp-big">
+          {shown !== null ? `${Math.round(shown)}${unitLabel(unit)}` : "—"}
+        </p>
         <p>
           Prawdopodobieństwo opadów:{" "}
           {precipprob !== null ? `${precipprob}%` : "brak danych"}

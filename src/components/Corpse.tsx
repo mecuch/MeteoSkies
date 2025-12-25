@@ -1,13 +1,15 @@
 import "./Corpse.css";
 import  CityWeatherBridge from "./Bridge";
 import { useNavigate } from "react-router-dom";
+import type { TempUnit } from "../App";
 
 type Props = {
   cities: string[];
   onRemoveCity: (city: string) => void;
+  unit: TempUnit
 };
 
-export default function Corpse({ cities, onRemoveCity }: Props) {
+export default function Corpse({ cities, onRemoveCity, unit }: Props) {
   const navigate = useNavigate();
   if (cities.length === 0) {
     return (
@@ -23,7 +25,7 @@ export default function Corpse({ cities, onRemoveCity }: Props) {
         {cities.map((city, index) => (
           <li key={index}>
             {city}
-            <CityWeatherBridge cityName={city} />
+            <CityWeatherBridge cityName={city} unit={unit} />
             <button onClick={() => navigate(`/more/${encodeURIComponent(city)}`)} className="button">Szczegóły</button>
             <button className="button" onClick={() => onRemoveCity(city)}>X</button>
           </li> 
