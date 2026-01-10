@@ -12,6 +12,7 @@ type Props = {
 export default function WeatherDetails({ latitude, longitude, unit }: Props) {
   const [temp, setTemp] = useState<number | null>(null);
   const [wethcode, setWethcode] = useState<number | null>(null);
+  const [cloudcover, setCloudCover] = useState<number | null>(null);
   const [precipprob, setPrecipProb] = useState<number | null>(null);
   const [precipsum, setPrecipSum] = useState<number>(0);
   const [rainsum, setRainSum] = useState<number>(0);
@@ -30,6 +31,7 @@ export default function WeatherDetails({ latitude, longitude, unit }: Props) {
       `&current_weather=true` +
       `&daily=precipitation_probability_max,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max,winddirection_10m_dominant` +
       `&forecast_days=1` +
+      `&hourly=cloudcover`+
       `&timezone=auto`;
 
     fetch(url)
@@ -37,6 +39,7 @@ export default function WeatherDetails({ latitude, longitude, unit }: Props) {
       .then((data) => {
         setTemp(data.current_weather?.temperature ?? null);
         setWethcode(data.current_weather?.weathercode ?? null);
+        setCloudCover(data.hourly?.cloudcover?.[0] ?? null);
         setPrecipProb(data.daily?.precipitation_probability_max?.[0] ?? null);
         setPrecipSum(data.daily?.precipitation_sum?.[0] ?? 0);
         setRainSum(data.daily?.rain_sum?.[0] ?? 0);
@@ -85,6 +88,10 @@ export default function WeatherDetails({ latitude, longitude, unit }: Props) {
       <div>
         <p className="weather-temp-big">
           {shown !== null ? `${Math.round(shown)}${unitLabel(unit)}` : "—"}
+        </p>
+        <p>
+          Zachmurzenie: {" "}
+          {cloudcover !== null ? `${cloudcover}%` : "brak danych"}
         </p>
         <p>
           Prawdopodobieństwo opadów:{" "}
